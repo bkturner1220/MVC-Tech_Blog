@@ -7,6 +7,14 @@ module.exports = {
   //   // format large numbers with commas
   //   return parseInt(amount).toLocaleString();
   // },
+
+  format_plural: (word, amount) => {
+    if (amount !== 1) {
+        return `${word}s`
+    }
+    return `${word}`
+},
+
   get_emoji: () => {
     const randomNum = Math.random();
 

@@ -1,11 +1,29 @@
+
 <div class="text-center">
   <h2>{{title}}</h2>
   <p>By: {{blog.user.name}}</p>
   <p>{{description}}</p>
   <p>Posted on: {{format_date date_created}}</p>
-  <p>
-  </p>
-  <p>
-    {{!-- <button class="btn btn-primary">Comment</button> --}}
-  </p>
 </div>
+
+<div class="comments-wrapper">
+        <h2>Comments</h2>
+        {{> comments post.comments}}
+    </div>
+
+    {{#if loggedIn}}
+    <form class="comment-form">
+        <div>
+            <textarea name="comment-body"></textarea>
+        </div>
+
+        <div>
+            <button type="submit">Add Comment</button>
+        </div>
+    </form>
+    {{/if}}
+</article>
+{{#if loggedIn}}
+<script src="/javascript/comment.js"></script>
+{{/if}}
+

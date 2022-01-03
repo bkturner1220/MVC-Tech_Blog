@@ -1,0 +1,11 @@
+[
+    {
+      "description": "This post was written by Ryan Nowak In 2.1 we're adding a feature to address a long-standing problem for maintaining MVC - how do we make improvements to framework code without making it too hard for developers to upgrade to the latest version?"
+    },
+    {
+      "description": "This post was written and submitted by Javier Calvarro Nelson, a developer on the ASP.NET Core MVC team Testing is an important part of the development process of any application."
+    },
+    {
+      "description": "It's been about two months since we released the first beta of ASP.NET 5, and today we happy to announce that ASP.NET 5 Beta2 is available."
+    }
+  ]

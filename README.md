@@ -34,7 +34,7 @@
 ## Screenshots 📷<a name='screenshots'></a>
    ![alt text](./assets/screenshots/screenshots01.png)
    <br>
-   
+
 ## Demo Video <a name='demo'></a>
    <a href="" target="_blank">----==== YouTube.com Video Link (with audio) ====----</a>
    <br>
@@ -47,6 +47,9 @@
    
 ## Github Repo Link <a name='repo'></a>
    <a href="https://github.com/bkturner1220/MVC-Tech_Blog" target="_blank">https://github.com/bkturner1220/MVC-Tech_Blog</a>
+
+   ## Heroku Deployed Link <a name='repo'></a>
+   <a href="https://frozen-tundra-76931.herokuapp.com/" target="_blank">https://frozen-tundra-76931.herokuapp.com/</a>
      
 ## Contact Information <a name='contact'></a>
    Github Username: [bkturner1220](https://github.com/bkturner1220/)<br>
