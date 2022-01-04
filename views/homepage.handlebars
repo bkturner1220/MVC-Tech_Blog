@@ -18,6 +18,9 @@
     <p>
       {{blog.description}}
     </p>
+    <div class="comment-wrapper">
+        <a href="/blog/{{id}}">{{comments.length}} {{format_plural "comment" comments.length}}</a>
+    </div>
   </div>
 </div>
 {{/each}}

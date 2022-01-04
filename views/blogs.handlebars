@@ -8,7 +8,7 @@
 
 <div class="comments-wrapper">
         <h2>Comments</h2>
-        {{> comments post.comments}}
+        {{> comments blog.comments}}
     </div>
 
     {{#if loggedIn}}
@@ -22,7 +22,6 @@
         </div>
     </form>
     {{/if}}
-</article>
 {{#if loggedIn}}
 <script src="/javascript/comment.js"></script>
 {{/if}}
