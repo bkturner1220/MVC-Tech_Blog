@@ -1,19 +1,20 @@
 
 header {
   border-bottom: 5px solid #1b89bc;
-  background-color: rgb(226, 228, 255);
+  background-color: rgb(79, 211, 123);
+  color: white;
 
 }
   
-
-
 .blog {
   border: 2px solid #ccc;
   border-radius: .3rem;
   box-shadow: 6px 6px 2px 1px #ccc;
   background-color: white;
   padding-top: 5px;
+  color: rgb(0, 0, 0);
 }
+
 
 h6 {
   text-decoration: underline;
@@ -23,13 +24,13 @@ h6 {
   border: none;
   padding: 0;
   cursor: pointer;
-  color: #1b89bc;
+  color: white;
   text-decoration: none;
   font-size: 100%;
 }
 
 .no-button:hover {
-  color: #065b83;
+  color: purple;
   text-decoration: underline;
 }
 

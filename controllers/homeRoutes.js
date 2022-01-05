@@ -6,24 +6,23 @@ router.get('/', async (req, res) => {
   try {
     // Get all blogs and JOIN with user data
     const blogData = await Blog.findAll({
-      order: [['created_at', 'DESC']],
-        include: [
-            {
-                model: Comment,
-                attributes: ['id', 'comment_text', 'blog_id', 'user_id', 'created_at'],
-                include: {
-                    model: User,
-                    attributes: ['name']
-                }
-            },
-            {
+      order: [['date_created', 'DESC']],
+
+    include: [
+        {
+            model: Comment,
+            attributes: ['id', 'comment', 'blog_id', 'user_id'],
+            include: {
                 model: User,
                 attributes: ['name']
             }
-        ]
-    })
-
-    // Serialize data so the template can read it
+        },
+        {
+            model: User,
+            attributes: ['name']
+        }
+    ]
+})
     const blogs = blogData.map((blog) => blog.get({ plain: true }));
 
     // Pass serialized data and session flag into template
@@ -39,23 +38,20 @@ router.get('/', async (req, res) => {
 router.get('/blog/:id', async (req, res) => {
   try {
     const blogData = await Blog.findByPk(req.params.id, {
-      where: {
-        id: req.params.id
-    },
     include: [
-        {
-            model: Comment,
-            attributes: ['id', 'comment_text', 'blog_id', 'user_id', 'created_at'],
-            include: {
-                model: User,
-                attributes: ['name']
-            }
-        },
+        // {
+        //     model: Comment,
+        //     attributes: ['id', 'comment', 'blog_id', 'user_id'],
+        //     include: {
+        //         model: User,
+        //         attributes: ['name']
+        //     }
+        // },
         {
             model: User,
-            attributes: ['name']
-        }
-    ]
+            attributes: ['name'],
+        },
+    ],
 })
 
     const blog = blogData.get({ plain: true });
@@ -76,7 +72,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
     const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'] },
       include: [{ model: Blog }],
-    });
+        });
 
     const user = userData.get({ plain: true });
 

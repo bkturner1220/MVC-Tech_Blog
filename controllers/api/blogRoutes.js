@@ -2,6 +2,63 @@ const router = require('express').Router();
 const { Blog, User, Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
 
+router.get('/', (req, res) => {
+  Blog.findAll({
+      include: [
+          {
+              model: Comment,
+              attributes: ['id', 'comment', 'blog_id', 'user_id', 'date_created'],
+              include: {
+                  model: User,
+                  attributes: ['name']
+              }
+          },
+          {
+              model: User,
+              attributes: ['name']
+          }
+      ]
+  })
+      .then(blogData => res.json(blogData))
+      .catch(err => {
+          console.log(err);
+          res.status(500).json(err);
+      })
+});
+
+router.get('/:id', (req, res) => {
+  Blog.findOne({
+      where: {
+          id: req.params.id
+      },
+      include: [
+          {
+              model: Comment,
+              attributes: ['id', 'comment', 'user_id', 'blog_id', 'date_created'],
+              include: {
+                  model: User,
+                  attributes: ['name']
+              }
+          },
+          {
+              model: User,
+              attributes: ['name']
+          }
+      ]
+  })
+      .then(blogData => {
+          if (!blogData) {
+              res.status(404).json({ message: 'No post found at this id' })
+          }
+
+          res.json(blogData)
+      })
+      .catch(err => {
+          console.log(err);
+          res.status(500).json(err);
+      })
+});
+
 router.post('/', withAuth, async (req, res) => {
   try {
     const newBlog = await Blog.create({

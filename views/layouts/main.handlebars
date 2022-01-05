@@ -13,17 +13,17 @@
   <div class="flex-column justify-space-around">
     <header class="display-flex justify-space-between align-center p-2">
       <h1>
-        <a href="/">The TECH Blog</a>
+        <a href="/" style="color: white;">The TECH Blog</a>
       </h1>
       <nav>
         <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
-        <a href="/">Home</a> |
-        <a href="/dashboard">Dashboard</a> |
+        <a href="/" style="color: white;">Home</a> |
+        <a href="/dashboard" style="color: white;">Dashboard</a> |
         <button class="no-button" id="logout">logout</button>
         {{else}}
-        <a href="/login">login</a> |
-        <a href="/signup">signup</a>   
+        <a href="/login" style="color: white;">login</a> |
+        <a href="/signup" style="color: white;">signup</a>   
         {{/if}}
       </nav>
     </header>
@@ -39,7 +39,7 @@
 
   <!-- Render script for logged in users only -->
   {{#if logged_in}}
-  <script src="/js/logout.js"></script>
+  <script src="/js/logout.js" style="color: white;"></script>
   {{/if}}
 </body>
 

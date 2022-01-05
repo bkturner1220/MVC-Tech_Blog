@@ -12,14 +12,14 @@
     <p>
       <!-- Pass needed_funding value to the helper function -->
     </p>
-    <p>Posted on: {{format_date blog.date_created}}</p>
+    <p>Posted on: {{format_date date_created}}</p>
   </div>
   <div class="col-md-7">
     <p>
       {{blog.description}}
     </p>
     <div class="comment-wrapper">
-        <a href="/blog/{{id}}">{{comments.length}} {{format_plural "comment" comments.length}}</a>
+        <a href="/blogs/{{id}}">{{comments.length}} {{format_plural "comment" comments.length}}</a>
     </div>
   </div>
 </div>

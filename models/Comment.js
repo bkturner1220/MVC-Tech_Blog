@@ -11,13 +11,15 @@ Comment.init(
             primaryKey: true,
             autoIncrement: true
         },
-        comment_text: {
-            type: DataTypes.TEXT,
+        comment: {
+            type: DataTypes.STRING,
             allowNull: false,
-            validate: {
-                len: [1]
-            }
         },
+        date_created: {
+            type: DataTypes.DATE,
+            allowNull: false,
+            defaultValue: DataTypes.NOW,
+          },
         user_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
