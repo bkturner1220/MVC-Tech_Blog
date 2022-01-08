@@ -7,11 +7,47 @@ router.get('/', async (req, res) => {
     // Get all blogs and JOIN with user data
     const blogData = await Blog.findAll({
       order: [['date_created', 'DESC']],
+      
+        include: [
+            {
+                model: Comment,
+                attributes: ['id', 'comment', 'blog_id', 'user_id', 'date_created'],
+                include: {
+                    model: User,
+                    attributes: ['name']
+                }
+            },
+            {
+                model: User,
+                attributes: ['name']
+            }
+        ]
+    })
+console.log(blogData)
+    // Serialize data so the template can read it
+    const blogs = blogData.map((blog) => blog.get({ plain: true }));
+console.log(blogs)
+    // Pass serialized data and session flag into template
+    res.render('homepage', { 
+      blogs, 
+      logged_in: req.session.logged_in 
+    });
+  } catch (err) {
+    console.log(err)
+    res.status(500).json(err);
+  }
+});
 
+router.get('/blog/:id', async (req, res) => {
+  try {
+    const blogData = await Blog.findByPk(req.params.id, {
+      where: {
+        id: req.params.id
+    },
     include: [
         {
             model: Comment,
-            attributes: ['id', 'comment', 'blog_id', 'user_id'],
+            attributes: ['id', 'comment', 'blog_id', 'user_id', 'date_created'],
             include: {
                 model: User,
                 attributes: ['name']
@@ -22,36 +58,6 @@ router.get('/', async (req, res) => {
             attributes: ['name']
         }
     ]
-})
-    const blogs = blogData.map((blog) => blog.get({ plain: true }));
-
-    // Pass serialized data and session flag into template
-    res.render('homepage', { 
-      blogs, 
-      logged_in: req.session.logged_in 
-    });
-  } catch (err) {
-    res.status(500).json(err);
-  }
-});
-
-router.get('/blog/:id', async (req, res) => {
-  try {
-    const blogData = await Blog.findByPk(req.params.id, {
-    include: [
-        // {
-        //     model: Comment,
-        //     attributes: ['id', 'comment', 'blog_id', 'user_id'],
-        //     include: {
-        //         model: User,
-        //         attributes: ['name']
-        //     }
-        // },
-        {
-            model: User,
-            attributes: ['name'],
-        },
-    ],
 })
 
     const blog = blogData.get({ plain: true });
@@ -72,7 +78,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
     const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'] },
       include: [{ model: Blog }],
-        });
+    });
 
     const user = userData.get({ plain: true });
 

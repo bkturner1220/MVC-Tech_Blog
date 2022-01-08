@@ -14,8 +14,9 @@ const loginFormHandler = async (event) => {
     });
 
     if (response.ok) {
+      console.log('CAN YOU SEE ME')
       // If successful, redirect the browser to the dashboard page
-      document.location.replace('/dashboard');
+      document.location.replace('/');
     } else {
       alert(response.statusText);
     }

@@ -1,20 +1,30 @@
 <div class="text-center">
   <h2>{{title}}</h2>
-  <p>By: {{blog.user.name}}</p>
+  <p>By: {{user.name}}</p>
   <p>{{description}}</p>
   <p>Posted on: {{format_date date_created}}</p>
 </div>
   </p>
-  <div class="text-center">
-  <p>
-    <form class="comment-form">
+ <div class="comments-wrapper text-center" style="padding-top: 20px;">
+        <h4>Comments:</h4>
+        {{> comments comments}}
+    </div>
+
+<br>
+<br>
+    <form class="comment-form text-center">
         <div>
             <textarea name="comment-body"></textarea>
         </div>
+  {{#if logged_in}}
 
         <div>
             <button type="submit">Add Comment</button>
         </div>
     </form>
-  </p>
 </div>
+    {{/if}}
+
+
+<script src="/js/comment.js"></script>
+
