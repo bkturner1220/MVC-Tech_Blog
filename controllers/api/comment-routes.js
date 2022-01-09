@@ -5,13 +5,13 @@ const withAuth = require('../../utils/auth');
 router.get('/', async (req, res) => {
     try {
         const commentData = await Comment.findAll()
-        res.json(commentData)
-    } catch (err) {
-        console.log(err);
-        res.status(500).json(err);
-    }
+            res.json(commentData)
 
-        });
+    } catch (error) {
+        console.log(error);
+            res.status(500).json(error);
+    }
+ });
 
 
 router.post('/', withAuth, async (req, res) => {
@@ -21,10 +21,10 @@ router.post('/', withAuth, async (req, res) => {
             user_id: req.session.user_id,
             blog_id: req.body.blog_id
         })
-        res.json(commentData)
-    } catch (err) {
-        console.log(err);
-        res.status(400).json(err);
+                res.json(commentData)
+    } catch (error) {
+        console.log(error);
+            res.status(400).json(error);
     }   
 });
 

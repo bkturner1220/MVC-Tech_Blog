@@ -2,8 +2,9 @@ const router = require('express').Router();
 const { Blog, User, Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-router.get('/', (req, res) => {
-  Blog.findAll({
+router.get('/', async (req, res) => {
+  try {
+    const blogData = await Blog.findAll({
       include: [
           {
               model: Comment,
@@ -19,15 +20,17 @@ router.get('/', (req, res) => {
           }
       ]
   })
-      .then(blogData => res.json(blogData))
-      .catch(err => {
-          console.log(err);
-          res.status(500).json(err);
-      })
+  res.json(blogData)
+  } catch (error) {
+    console.log(error);
+          res.status(500).json(error);
+  }
 });
 
-router.get('/:id', (req, res) => {
-  Blog.findOne({
+router.get('/:id', async (req, res) => {
+  try {
+    
+    const blogData = await Blog.findOne({
       where: {
           id: req.params.id
       },
@@ -46,18 +49,17 @@ router.get('/:id', (req, res) => {
           }
       ]
   })
-      .then(blogData => {
-          if (!blogData) {
-              res.status(404).json({ message: 'No post found at this id' })
-          }
+  if (!blogData) {
+    res.status(404).json({ message: 'No blog found at this id' })
+}
 
-          res.json(blogData)
-      })
-      .catch(err => {
-          console.log(err);
-          res.status(500).json(err);
-      })
-});
+res.json(blogData)
+
+  } catch (error) {
+    console.log(error);
+    res.status(500).json(error); 
+  } 
+ });
 
 router.post('/', withAuth, async (req, res) => {
   try {
@@ -67,8 +69,8 @@ router.post('/', withAuth, async (req, res) => {
     });
 
     res.status(200).json(newBlog);
-  } catch (err) {
-    res.status(400).json(err);
+  } catch (error) {
+    res.status(400).json(error);
   }
 });
 
@@ -87,8 +89,8 @@ router.delete('/:id', withAuth, async (req, res) => {
     }
 
     res.status(200).json(blogData);
-  } catch (err) {
-    res.status(500).json(err);
+  } catch (error) {
+    res.status(500).json(error);
   }
 });
 

@@ -32,9 +32,9 @@ console.log(blogs)
       blogs, 
       logged_in: req.session.logged_in 
     });
-  } catch (err) {
-    console.log(err)
-    res.status(500).json(err);
+  } catch (error) {
+    console.log(error)
+    res.status(500).json(error);
   }
 });
 
@@ -66,8 +66,8 @@ router.get('/blog/:id', async (req, res) => {
       ...blog,
       logged_in: req.session.logged_in
     });
-  } catch (err) {
-    res.status(500).json(err);
+  } catch (error) {
+    res.status(500).json(error);
   }
 });
 
@@ -86,8 +86,8 @@ router.get('/dashboard', withAuth, async (req, res) => {
       ...user,
       logged_in: true
     });
-  } catch (err) {
-    res.status(500).json(err);
+  } catch (error) {
+    res.status(500).json(error);
   }
 });
 
