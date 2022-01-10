@@ -34,13 +34,16 @@
 ## Screenshots 📷<a name='screenshots'></a>
    ![alt text](./assets/screenshots/screenshots01.png)
    <br>
-
-## Demo Video <a name='demo'></a>
-   <a href="" target="_blank">----==== YouTube.com Video Link (with audio) ====----</a>
-   <br>
+   ![alt text](./assets/screenshots/screenshot05.png)
    <br>
 
-   ![alt text]()
+## Demo .GIF Video 📷<a name='gif'></a>
+   ![alt text](./assets/demo/techblog_DEMO.gif)
+   <br>
+
+## Demo YouTube.com Video <a name='demo'></a>
+   <a href="https://youtu.be/R71w3BH9yR0" target="_blank">----==== YouTube.com Video Link (with audio) ====----</a>
+   <br>
         
 ## Github Pages Link <a name='pages'></a>
    <a href="https://bkturner1220.github.io/MVC-Tech_Blog" target="_blank">https://bkturner1220.github.io/MVC-Tech_Blog</a>
